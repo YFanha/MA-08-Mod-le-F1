@@ -20,3 +20,15 @@ Create table people (
 
 	unique(lastname, firstname, birthdate)
 );
+
+
+-- Créer la table adresses
+
+Create table addresses (
+	id int identity(1,1) primary key not null,
+	street varchar(50) not null,
+	zipCode varchar(50) not null,
+	city date not null,
+	country varchar(50) not null,
+	unique(street, zipcode, city)
+);
