@@ -29,7 +29,7 @@ Create table addresses (
 	street varchar(50) not null,
 	zipCode varchar(50) not null,
 	city varchar(50) not null,
-	AdditionnalAddress varchar(100),
+	AdditionnalAddress varchar(100) null,
 	country varchar(50) not null,
 
 	unique(street, zipcode, city, country)
@@ -38,6 +38,41 @@ Create table addresses (
 
 -- Créer la table Sponsors
 
+Create table Sponsors (
+	id int identity(1,1) primary key not null,
+	name varchar(50) not null,
+	value float not null,
+	creationDate date not null,
+	agreementDuration time not null,
+	advertType varchar(50) not null,
+
+	unique(name, creationDate)
+);
+
+
 -- Créer la table ecuries
 
+Create table Teams (
+	id int identity(1,1) primary key not null,
+	name varchar(50) not null,
+	country varchar(50) not null,
+	F1since int null,
+	victoryNumber varchar(100),
+	nbrGP int null,
+	president varchar(50) not null,
+
+	unique(name)
+);
+
 -- Créer la table voitures
+
+Create table Cars (
+	id int identity(1,1) primary key not null,
+	chassisNumber varchar(20) not null,
+	brand varchar(50) not null,
+	model varchar(100) not null,
+	netWeight int,
+	power int,
+
+	unique(chassisNumber)
+);
