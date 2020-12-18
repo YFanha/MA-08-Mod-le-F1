@@ -28,7 +28,16 @@ Create table addresses (
 	id int identity(1,1) primary key not null,
 	street varchar(50) not null,
 	zipCode varchar(50) not null,
-	city date not null,
+	city varchar(50) not null,
+	AdditionnalAddress varchar(100),
 	country varchar(50) not null,
-	unique(street, zipcode, city)
+
+	unique(street, zipcode, city, country)
 );
+
+
+-- Créer la table Sponsors
+
+-- Créer la table ecuries
+
+-- Créer la table voitures
