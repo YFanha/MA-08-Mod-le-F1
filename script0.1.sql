@@ -16,9 +16,12 @@ Create table people (
 	birthdate date not null,
 	nationality varchar(50) not null,
 	height float null,
-	weight float null
+	weight float null,
+	addresse_id INT not null,
+	team_id INT not null,
+	role_id INT not null,
 
-	unique(lastname, firstname, birthdate)
+	CONSTRAINT uniquePerson unique(lastname, firstname, birthdate)
 );
 
 
@@ -32,7 +35,7 @@ Create table addresses (
 	AdditionnalAddress varchar(100) null,
 	country varchar(50) not null,
 
-	unique(street, zipcode, city, country)
+	CONSTRAINT uniqueAddresse unique(street, zipcode, city, country)
 );
 
 
@@ -46,7 +49,7 @@ Create table Sponsors (
 	agreementDuration time not null,
 	advertType varchar(50) not null,
 
-	unique(name, creationDate)
+	CONSTRAINT uniqueSponsor unique(name, creationDate)
 );
 
 
@@ -61,7 +64,7 @@ Create table Teams (
 	nbrGP int null,
 	president varchar(50) not null,
 
-	unique(name)
+	CONSTRAINT uniqueTeam unique(name)
 );
 
 -- Créer la table voitures
@@ -74,5 +77,101 @@ Create table Cars (
 	netWeight int,
 	power int,
 
-	unique(chassisNumber)
+	CONSTRAINT uniqueCar unique(chassisNumber)
 );
+
+-- Créer la table circuits
+Create table Circuits (
+	id int identity(1,1) primary key not null,
+	name varchar(50) not null,
+	country varchar(50) not null,
+	city varchar(50) not null,
+	lenght DECIMAL(20) not null,
+	nbTurns DECIMAL(20) null,
+	creatDate DATE null,
+
+	CONSTRAINT uniqueCircuit unique(name, city)
+);
+
+-- Créer la table race
+Create table people_race_circuits (
+	id int identity(1,1) primary key not null,
+	raceDate DATE not null,
+	time TIME null,
+);
+
+-- Créer la table headquarters
+Create table Headquarters (
+	id int identity(1,1) primary key not null,
+	name varchar(50) not null,
+	creationDate DATE null,
+
+	CONSTRAINT uniqueHeadquarter unique(name)
+);
+
+-- Créer la table roles
+Create table Roles (
+	id int identity(1,1) primary key not null,
+	name varchar(50) not null,
+
+	CONSTRAINT uniqueRole unique(name)
+);
+
+-- Créer la table results
+Create table Results (
+	id int identity(1,1) primary key not null,
+	date DATE not null,
+	place varchar(50) not null,
+	time TIME not null,
+	point int not null,
+
+	CONSTRAINT uniqueResult unique(date, place, time)
+);
+
+-- Créer la table finance
+Create table sponsors_finance_teams (
+	id int identity(1,1) primary key not null,
+);
+
+-- Modifier la table personnes
+ALTER TABLE people
+ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+	
+
+-- Modifier la table adresses
+
+
+
+-- Modifier la table Sponsors
+
+
+-- Modifier la table ecuries
+
+
+-- Modifier la table voitures
+
+
+
+-- Modifier la table circuits
+
+
+-- Modifier la table people_race_circuits
+
+
+-- Modifier la table headquarters
+
+
+-- Modifier la table roles
+
+
+-- Modifier la table results
+
+
+-- Modifier la table sponsors_finance_teams
+
+
+
+
+
+--ALTER TABLE Results
+--ADD CONSTRAINT uniqueResult unique(date, place, time, point)
