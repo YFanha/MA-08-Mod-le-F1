@@ -1,10 +1,10 @@
 /*	
 	Author : Sven Volery & Yann Fanha
 	Project : Formule 1 (F1)
-	version : 11.12.2020
+	version : v1.1 08.01.2021
 */
---Create database F1;
 
+--use database F1;
 use F1;
 
 -- Créer la table personnes
