@@ -48,6 +48,7 @@ Create table Sponsors (
 	creationDate date not null,
 	agreementDuration time not null,
 	advertType varchar(50) not null,
+	addresse_id INT not null,
 
 	CONSTRAINT uniqueSponsor unique(name, creationDate)
 );
@@ -63,6 +64,7 @@ Create table Teams (
 	victoryNumber varchar(100),
 	nbrGP int null,
 	president varchar(50) not null,
+	headquarter_id INT not null,
 
 	CONSTRAINT uniqueTeam unique(name)
 );
@@ -76,6 +78,7 @@ Create table Cars (
 	model varchar(100) not null,
 	netWeight int,
 	power int,
+	team_id INT not null,
 
 	CONSTRAINT uniqueCar unique(chassisNumber)
 );
@@ -93,11 +96,13 @@ Create table Circuits (
 	CONSTRAINT uniqueCircuit unique(name, city)
 );
 
--- Créer la table race
+-- Créer la table people_race_circuits
 Create table people_race_circuits (
 	id int identity(1,1) primary key not null,
 	raceDate DATE not null,
 	time TIME null,
+	people_id INT not null,
+	circuit_id INT not null
 );
 
 -- Créer la table headquarters
@@ -121,16 +126,19 @@ Create table Roles (
 Create table Results (
 	id int identity(1,1) primary key not null,
 	date DATE not null,
-	place varchar(50) not null,
 	time TIME not null,
 	point int not null,
+	circuit_id INT not null,
+	person_id INT not null,
 
-	CONSTRAINT uniqueResult unique(date, place, time)
+	CONSTRAINT uniqueResult unique(date, circuit_id, time)
 );
 
--- Créer la table finance
+-- Créer la table sponsors_finance_teams
 Create table sponsors_finance_teams (
 	id int identity(1,1) primary key not null,
+	team_id INT not null,
+	sponsor_id INT not null,
 );
 
 -- Modifier la table personnes
