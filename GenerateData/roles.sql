@@ -1,0 +1,10 @@
+insert into roles (name) values ('Hawk, red-tailed');
+insert into roles (name) values ('Goat, mountain');
+insert into roles (name) values ('American Virginia opossum');
+insert into roles (name) values ('Glider, feathertail');
+insert into roles (name) values ('Vulture, lappet-faced');
+insert into roles (name) values ('Crane, stanley');
+insert into roles (name) values ('Fox, blue');
+insert into roles (name) values ('Asian red fox');
+insert into roles (name) values ('Malleefowl');
+insert into roles (name) values ('Platypus');
